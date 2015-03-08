@@ -1,0 +1,128 @@
+/**
+* 
+*                   Sistema para control y gestion de componentes
+*                                   Cas-Cam/LV
+*           Desarrollado para Compañia Minera Doña Ines de Collahuasi SCM 
+*
+*
+* * * * * * * * * * * * * * * *
+* Datos de desarrollo
+* *
+* Nombre de Archivo 
+* Version 0.0.1 
+* Fecha Creacion 20150308
+* Hora Creacion 05:18:40
+* * 
+* Modificaciones
+* *
+* Version 0.1.0
+* Fecha Modificacion
+* Hora ultima modificacion
+* *
+* Datos del desarrollador
+* *
+* Nombre Pablo Figueroa Alvarez
+* Mail pabluster@gmail.com
+* Movil (+56-9) 4234 3378
+* * * * * * * * * * * * * * * *
+* Descripcion del Archivo
+*
+* Este documento tiene por objeto generar el orden en la presentacion de las
+* paginas html bajo un solo estandar visual.
+* * * * * * * * * * * * * * * *
+*
+* la modificacion de este o parte de este puede ocacionar falla en la aplicacion
+* este y todos los componentes de este sistema estan protegidos por derechos de
+* porpiedad intelectual bajo la ley de derecho de autor que se encuentra regulada 
+* por la Ley Chilena N° 17.336 sobre Propiedad Intelectual de 2/10/1970 y sus 
+* posteriores modificaciones.
+*
+* Todos los derechos reservados ©Pablo Figueroa Alvarez Marzo 2015
+*/
+
+header{
+    background: url("./img/logo.png") no-repeat 30px center,
+     			url("./img/header.jpg");
+     background-size: 30px 50px;
+     background-size: auto 45%;
+     height: 110px;
+ }
+body{
+	background-image: url("./img/bg.jpg");
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:10px;
+	font-weight:bold;
+ }
+footer {
+	width:100%;
+	height:50px;
+	margin: -100px auto 0;
+	position:absolute;
+	bottom:0;
+	left:0;
+	text-align:center;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:10px;
+	font-weight:bold;
+ }
+nav{
+	/* Bordes redondeados */
+	-webkit-border-radius:50px;/* Para chrome y Safari */
+	-moz-border-radius:50px;/* Para Firefox */
+	-o-border-radius:50px;/* Para Opera */
+	border-radius:25px;/*El estandar por defecto*/
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#CCC));/*Para chrome y Safari*/
+	/* Degradados */
+	background-image: -moz-linear-gradient(top center, #FFF, #CCC);/*Para Firefox*/
+	background-image: -o-linear-gradient(top, #FFF, #CCC);/*Para Opera*/
+	background-image: linear-gradient(top, #FFF, #CCC);/*El estandar por defecto*/
+	overflow:hidden;
+	padding:10px;
+	width:750px;
+ }	
+nav ul{
+	list-style:none;
+	margin:0 10px 0 10px;
+	padding:0;
+ }	
+nav ul li{
+	/* Bordes redondeados */
+	-webkit-border-radius:5px;/*Chrome y Safari*/
+	-moz-border-radius:5px;/*Firefox*/
+	-o-border-radius:5px;/*Opera*/
+	border-radius:5px;/*Estandar por defecto*/
+	float:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:10px;
+	font-weight:bold;
+	margin-right:10px;
+	text-align:center;
+	/* Sombras para texto, los mismos parametros que box-shadow */
+	text-shadow: 0px 1px 0px #FFF;
+ }
+nav ul li:hover{
+	/* Degradado de fondo */
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#FFF), to( #E3E3E3));/*Chrome y Safari*/
+	background-image: -moz-linear-gradient(top center, #FFF, #E3E3E3);/*Firefox*/
+	background-image: -o-linear-gradient(top, #FFF, #E3E3E3);/*Opera*/
+	background-image: linear-gradient(top, #FFF, #E3E3E3);/*Estandar por defecto*/
+	/* Sombras */
+	-webkit-box-shadow:  1px -1px 0px #999;/*Chrome y Safari*/
+	-moz-box-shadow:  1px -1px 0px #999;/*Firefox*/
+	-o-box-shadow:  1px -1px 0px #999;/*Opera*/
+	box-shadow:  1px -1px 0px #999;/*Estandar por defecto*/
+	border:1px solid #E3E3E3;
+ }
+nav ul li a{
+	color:#000;
+	display:block;
+
+	padding:10px;
+	text-decoration:none;
+	/* Transiciones */
+	-webkit-transition: 0.4s linear all;
+	-moz-transition: 0.4s linear all;
+	-o-transition: 0.4s linear all;
+	transition: 0.4s linear all;
+ }
+nav ul li a:hover {color:#000}

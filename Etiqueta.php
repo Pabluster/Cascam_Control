@@ -44,11 +44,9 @@
 ?>
 <html>
 <footer>
-	<p>
-		<center>
+	<div>
 			Todos los Derechos Reservados<br> 
 			&copy;Pablo Figueroa Alvarez Marzo 2015
-		</center>
-	</p>
+	</div>
 </footr>
 </html>
