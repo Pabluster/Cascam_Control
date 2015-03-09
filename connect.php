@@ -61,5 +61,6 @@
         * falla nos envie un mensaje de error (mensaje contenido en el "String")
         */
         $conexion = mysql_connect($host,$user,$pswd) or die("No se pudo autentificar con la DB");
+        mysql_query("SET NAMES 'utf8'");
         mysql_select_db($db,$conexion) or die("No se pudo conectar con la base de datos");
 ?>
