@@ -31,9 +31,9 @@ CREATE TABLE TBL_Empresa (
 );
 
 CREATE TABLE TBL_MV_EQ (
+	Num_Interno VARCHAR(6) NOT NULL,
 	Patente VARCHAR(6) NOT NULL,
 	Km	VARCHAR(6),
-	Num_Interno VARCHAR(6) NOT NULL,
 	Gerencia VARCHAR(20) NOT NULL REFERENCES TBL_Gerencia(Nom_Gerencia),
 	Sup_Int VARCHAR(20) NOT NULL REFERENCES TBL_Sup_Int(Nom_Sup_Int),
 	Area VARCHAR(20) NOT NULL REFERENCES TBL_Area(Nom_Area),
@@ -42,5 +42,5 @@ CREATE TABLE TBL_MV_EQ (
    Sn_DashBoard VARCHAR(20) NOT NULL,
    Ejecutor VARCHAR(50) NOT NULL REFERENCES TBL_Ejecutor(Nom_Ejecutor),
    Fecha DATE NOT NULL,
-   PRIMARY KEY (Patente)
+   PRIMARY KEY (Num_Interno)
 );

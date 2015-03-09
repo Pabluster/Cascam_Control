@@ -38,7 +38,8 @@
 * por la Ley Chilena N° 17.336 sobre Propiedad Intelectual de 2/10/1970 y sus 
 * posteriores modificaciones.
 *
-* Todos los derechos reservados ©Pablo Figueroa Alvarez Marzo 2015
+* 	Todos los derechos reservados 
+* ©Pablo Figueroa Alvarez Marzo 2015
 */
 
 ?>

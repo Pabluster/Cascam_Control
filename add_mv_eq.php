@@ -17,9 +17,9 @@
 * * 
 * Modificaciones
 * *
-* Version 0.0.0
-* Fecha Modificacion
-* Hora ultima modificacion
+* Version 0.0.1
+* Fecha Modificacion 20150308
+* Hora ultima modificacion 06:18:20
 * *
 * Datos del desarrollador
 * *
@@ -72,9 +72,9 @@
         /**
         * Definimos variables para cada uno de los datos a almacenar
         */
+        $n_intRG     = $_POST['n_int'];
         $patenteRG   = $_POST['patente'];
         $kmRG        = $_POST['km'];
-        $n_intRG     = $_POST['n_int'];
         $gerenciaRG  = $_POST['gerencia'];
         $siRG        = $_POST['si'];
         $areaRG      = $_POST['area'];
