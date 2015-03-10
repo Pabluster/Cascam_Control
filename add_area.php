@@ -63,7 +63,7 @@
         /**
         * Definimos variables para cada uno de los datos a almacenar
         */
-        $areaRG     = $_POST['area'];
+        $areaRG     = trim($_POST['area']);
         $su_intRG = $_POST['su_int'];
 
         /**

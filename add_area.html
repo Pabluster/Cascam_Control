@@ -3,6 +3,16 @@
 <head>
     <link rel="stylesheet" type="text/css" href="./estilo.css">
     <title>Registro de Area</title>
+
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script>
+    jQuery(document).ready(function($) {
+        
+        $( "#contSelect" ).load( "select-superint.php" );
+
+    });
+    </script>
+
 </head>
 <body>
     <header>
@@ -25,7 +35,7 @@
     <form action="add_area.php" method="post" name="formulario_registro_ejecutor">
     	
     	Nombre de Area : <br><input type="text" name="area"></input><br>
-    	Superintendencia a la que pertenece : <br><input type="text" name="su_int"></input><br>
+    	Superintendencia a la que pertenece : <br><p id="contSelect"></p><br>
         
     	<br><input type="submit" name="boton-add" value="Guardar"></input><br>
     	<br><input type="button" class="submit" value="Salir" onclick="location.href='index.html'"></input><br>
@@ -36,7 +46,7 @@
 	<p>
 		<center>
 			Todos los Derechos Reservados<br> 
-			&copy;Pablo Figueroa Alvarez Marzo 2015
+			&copy; Pablo Figueroa Alvarez Marzo 2015
 		</center>
 	</p>
 </footer>

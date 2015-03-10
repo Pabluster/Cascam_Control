@@ -2,7 +2,7 @@ CREATE TABLE TBL_Ejecutor (
 	Nom_Ejecutor VARCHAR(50) NOT NULL,
 	RUT VARCHAR(12) NOT NULL,
 	Cargo VARCHAR(20),
-    PRIMARY KEY (Nom_Ejecutor)
+	PRIMARY KEY (Nom_Ejecutor)
 );
 
 CREATE TABLE TBL_Gerencia (
@@ -38,9 +38,9 @@ CREATE TABLE TBL_MV_EQ (
 	Sup_Int VARCHAR(20) NOT NULL REFERENCES TBL_Sup_Int(Nom_Sup_Int),
 	Area VARCHAR(20) NOT NULL REFERENCES TBL_Area(Nom_Area),
 	Empresa VARCHAR(20) NOT NULL REFERENCES TBL_Empresa(Nom_Empresa),
-   Sn_Rf	VARCHAR(20) NOT NULL,
-   Sn_DashBoard VARCHAR(20) NOT NULL,
-   Ejecutor VARCHAR(50) NOT NULL REFERENCES TBL_Ejecutor(Nom_Ejecutor),
-   Fecha DATE NOT NULL,
-   PRIMARY KEY (Num_Interno)
+	Sn_Rf	VARCHAR(20) NOT NULL,
+	Sn_DashBoard VARCHAR(20) NOT NULL,
+	Ejecutor VARCHAR(50) NOT NULL REFERENCES TBL_Ejecutor(Nom_Ejecutor),
+	Fecha DATE NOT NULL,
+	PRIMARY KEY (Num_Interno)
 );

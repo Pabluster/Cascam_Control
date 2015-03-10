@@ -4,8 +4,8 @@
 		
 		$host = "localhost";
 		$user = "root";
-		$pasw = "asdasd";
-		$db = "DB_Cascam_Control";
+		$pasw = "";
+		$db = "pablo";
 
 		$con = mysql_connect($host, $user, $pasw) or die("No se pudo autenticar con la DB.");
 		mysql_select_db($db, $con) or die("No se encontro la Base de Dato o esta no existe");

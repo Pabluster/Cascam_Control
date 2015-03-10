@@ -3,6 +3,20 @@
 <head>
     <link rel="stylesheet" type="text/css" href="estilo.css">
     <title>Formulario de Registro Movimiento Equipo Cascam/LV</title>
+    
+     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script>
+    jQuery(document).ready(function($) {
+        
+        $( "#contArea" ).load( "select-area.php" );
+        $( "#contGerencia" ).load( "select-gerencia.php" );
+        $( "#contEmpresa" ).load( "select-empresa.php" );
+        $( "#contsuperin" ).load( "select-superint.php" );
+        $( "#contejecutor" ).load( "select-ejecutor.php" );
+
+    });
+    </script>
+
 </head>
 <body>
     <header>
@@ -27,13 +41,13 @@
     Numero Interno     : <br> <input type="text" name="n_int"> Ej: CTA013 </input><br>
     Patente            : <br> <input type="text" name="patente"> Ej: AABB11</input> <br>
     Kilometraje        : <br> <input type="text" name="km"></input><br>
-    Gerencia           : <br> <input type="text" name="gerencia"></input><br>
-    Superintendencia   : <br> <input type="text" name="si"></input><br>
-    Area               : <br> <input type="text" name="area"></input><br>
-    Empresa            : <br> <input type="text" name="empresa"></input><br>
+    Gerencia           : <p id="contGerencia"></p>
+    Superintendencia   : <p id="contsuperin"></p>
+    Area               : <p id="contArea"></p>
+    Empresa            : <p id="contEmpresa"></p>
     Numero Serie RF    : <br> <input type="text" name="sn_rf"> Sin comas ni puntos </input><br>
     Numero Serie Dash  : <br> <input type="text" name="sn_dash"> Sin comas ni puntos </input><br>
-    Ejecutor           : <br> <input type="text" name="ejecutor"></input><br>
+    Ejecutor           : <p id="contejecutor"></p>
     Fecha de Ejecucion : <br><input type="date" name="fecha"> AAAAMMDD</input><br>
 
     <br><input type="submit" name="boton_guardar" value="Guardar"></input><br>
@@ -46,7 +60,7 @@
     <p>
         <center>
             Todos los Derechos Reservados<br> 
-            &copy;Pablo Figueroa Alvarez Marzo 2015
+            &copy; Pablo Figueroa Alvarez Marzo 2015
         </center>
     </p>
 </footer>

@@ -3,6 +3,15 @@
 <head>
     <link rel="stylesheet" type="text/css" href="estilo.css">
     <title>Registro de Empresa</title>
+
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script>
+    jQuery(document).ready(function($) {
+        
+        $( "#contSelect" ).load( "select-area.php" );
+
+    });
+    </script>
 </head>
 <body>
     <header>
@@ -27,7 +36,7 @@
     	Nombre de Empresa : <br><input type="text" name="empresa"></input><br>
     	Rut : <br><input type="text" name="rut"> Ej: 12.123.123-0</input><br>
     	Giro : <br><input type="text" name="giro"></input><br>
-    	Area a la que pertenece : <br><input type="text" name="area"></input><br>
+    	Area a la que pertenece : <br><p id="contSelect"></p><br>
     	<br><input type="submit" name="boton-add" value="Guardar"></input><br>
     	<br><input type="button" class="submit" value="Salir" onclick="location.href='index.html'"></input><br>
     
@@ -37,7 +46,7 @@
     <p>
         <center>
             Todos los Derechos Reservados<br> 
-            &copy;Pablo Figueroa Alvarez Marzo 2015
+            &copy; Pablo Figueroa Alvarez Marzo 2015
         </center>
     </p>
 </footer>

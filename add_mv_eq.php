@@ -49,11 +49,11 @@
     * Por medio de un if hacemos comparacion de las variables y el metodo POST
     * con la finalidad de comprobar que no tengamos campos vacios en el formulario
     **/
-    if (isset($_POST['patente']) && !empty($_POST['patente']) &&
+    if (isset($_POST['n_int']) && !empty($_POST['n_int']) &&
+        isset($_POST['patente']) && !empty($_POST['patente']) &&
         isset($_POST['km']) && !empty($_POST['km']) &&
-        isset($_POST['n_int']) && !empty($_POST['n_int']) &&
         isset($_POST['gerencia']) && !empty($_POST['gerencia']) &&
-        isset($_POST['si']) && !empty($_POST['si']) &&
+        isset($_POST['su_int']) && !empty($_POST['su_int']) &&
         isset($_POST['area']) && !empty($_POST['area']) &&
         isset($_POST['empresa']) && !empty($_POST['empresa']) &&
         isset($_POST['sn_rf']) && !empty($_POST['sn_rf']) &&
@@ -72,17 +72,17 @@
         /**
         * Definimos variables para cada uno de los datos a almacenar
         */
-        $n_intRG     = $_POST['n_int'];
-        $patenteRG   = $_POST['patente'];
-        $kmRG        = $_POST['km'];
-        $gerenciaRG  = $_POST['gerencia'];
-        $siRG        = $_POST['si'];
-        $areaRG      = $_POST['area'];
-        $empresaRG   = $_POST['empresa'];
-        $sn_rfRG     = $_POST['sn_rf'];
-        $sn_dashRG   = $_POST['sn_dash'];
-        $ejecutorRG  = $_POST['ejecutor'];
-        $fechaRG     = $_POST['fecha'];
+        $n_intRG     = trim($_POST['n_int']);
+        $patenteRG   = trim($_POST['patente']);
+        $kmRG        = trim($_POST['km']);
+        $gerenciaRG  = trim($_POST['gerencia']);
+        $siRG        = trim($_POST['su_int']);
+        $areaRG      = trim($_POST['area']);
+        $empresaRG   = trim($_POST['empresa']);
+        $sn_rfRG     = trim($_POST['sn_rf']);
+        $sn_dashRG   = trim($_POST['sn_dash']);
+        $ejecutorRG  = trim($_POST['ejecutor']);
+        $fechaRG     = trim($_POST['fecha']);
         
         /**
         * Definimos una query para insertar datos a nuestra tabla
@@ -93,24 +93,28 @@
         * antes seleccionadas, como los datos almacenados en las variables son del caracter string
         * deben ir entre comilla simple.
         */
-        mysql_query(
-            "INSERT INTO TBL_MV_EQ(Patente,Km,Num_Interno,Gerencia,Sup_Int,Area,Empresa,Sn_Rf,Sn_DashBoard,Ejecutor,Fecha) 
-            values('$patenteRG','$kmRG','$n_intRG','$gerenciaRG','$siRG','$areaRG','$empresaRG','$sn_rfRG','$sn_dashRG','$ejecutorRG','$fechaRG') 
-            "); 
-        /**
-        * Cerramos la Query de insercion de datos
-        */
+        
 
-        /**
-        * Enviamos un mensaje si la insercion de datos fue correcta
-        */
-        echo "<br>Los datos fueron guardados correctamente<br>";
-        echo "<a href=add_mv_eq.html>Volver al formulario</a>";
-        echo "<br><a href=index.html>Ir al Formulario de Movimiento de Equipos</a><br>";
+        $query = "SELECT * FROM tbl_mv_eq WHERE Num_Interno='$n_intRG'";
+        $cod = mysql_query($query) or die(mysql_error());
+        $total = mysql_num_rows($cod);
+        
+        if ($total > 0){
+
+            echo "El vehiculo con el $n_intRG ya existe";
+            
+        }else{
+            
+                 mysql_query(
+                "INSERT INTO tbl_mv_eq (Num_Interno,Patente,Km,Gerencia,Sup_Int,Area,Empresa,Sn_Rf,Sn_DashBoard,Ejecutor,Fecha) 
+                values('$n_intRG','$patenteRG','$kmRG','$gerenciaRG','$siRG','$areaRG','$empresaRG','$sn_rfRG','$sn_dashRG','$ejecutorRG','$fechaRG')");
+                echo "<a href=add_mv_eq.html>Volver al formulario</a>";
+                echo "<br><a href=index.html>Ir al Formulario de Movimiento de Equipos</a><br>";
+
+            }
+                
     }
-    /**
-    * Si la condicion del if NO cumple en su totalidad ejecutamos un else (entonces)
-    */
+  
     else
     {
         /**
