@@ -54,7 +54,6 @@
         isset($_POST['km']) && !empty($_POST['km']) &&
         isset($_POST['gerencia']) && !empty($_POST['gerencia']) &&
         isset($_POST['su_int']) && !empty($_POST['su_int']) &&
-        isset($_POST['area']) && !empty($_POST['area']) &&
         isset($_POST['empresa']) && !empty($_POST['empresa']) &&
         isset($_POST['sn_rf']) && !empty($_POST['sn_rf']) &&
         isset($_POST['sn_dash']) && !empty($_POST['sn_dash']) &&
@@ -77,7 +76,6 @@
         $kmRG        = trim($_POST['km']);
         $gerenciaRG  = trim($_POST['gerencia']);
         $siRG        = trim($_POST['su_int']);
-        $areaRG      = trim($_POST['area']);
         $empresaRG   = trim($_POST['empresa']);
         $sn_rfRG     = trim($_POST['sn_rf']);
         $sn_dashRG   = trim($_POST['sn_dash']);
@@ -104,10 +102,10 @@
             echo "El vehiculo con el $n_intRG ya existe";
             
         }else{
-            
+             
                  mysql_query(
-                "INSERT INTO tbl_mv_eq (Num_Interno,Patente,Km,Gerencia,Sup_Int,Area,Empresa,Sn_Rf,Sn_DashBoard,Ejecutor,Fecha) 
-                values('$n_intRG','$patenteRG','$kmRG','$gerenciaRG','$siRG','$areaRG','$empresaRG','$sn_rfRG','$sn_dashRG','$ejecutorRG','$fechaRG')");
+                "INSERT INTO tbl_mv_eq (Num_Interno,Patente,Km,Gerencia,Sup_Int,Empresa_Area,Sn_Rf,Sn_DashBoard,Ejecutor,Fecha ) 
+                values('$n_intRG','$patenteRG','$kmRG','$gerenciaRG','$siRG','$empresaRG','$sn_rfRG','$sn_dashRG','$ejecutorRG','$fechaRG')");
                 echo "<a href=add_mv_eq.html>Volver al formulario</a>";
                 echo "<br><a href=index.html>Ir al Formulario de Movimiento de Equipos</a><br>";
 

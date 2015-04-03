@@ -15,9 +15,9 @@
 * * 
 * Modificaciones
 * *
-* Version 2.0.7
+* Version 2.0.9
 * Fecha Modificacion 20150402
-* Hora ultima modificacion 06:22:00
+* Hora ultima modificacion 09:51:00
 * *
 * Datos del desarrollador
 * *
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `tbl_empresa_area` (
   `id_empresa_area` int(5) NOT NULL AUTO_INCREMENT,
   `Nom_Empresa` varchar(20) NOT NULL,
   `Giro` varchar(50) DEFAULT NULL,
-  `id_supint` int(5) NOT NULL,
+  `id_supint` int(5) NOT NULL REFERENCES tbl_sup_int(id_supint),
   PRIMARY KEY (`id_empresa_area`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `tbl_empresa_area` (
 --
 
 INSERT INTO `tbl_empresa_area` (`id_empresa_area`, `Nom_Empresa`, `Giro`, `id_supint`) VALUES
-(1, 'Automatizacion Mina', 'Implementacion, desarrollo y mantencion de sistemas tecnologicos', 1),
+(1, 'Automatizacion Mina', 'Mantencion de sistemas tecnologicos', 1),
 (2, 'Despacho Mina', 'Control y gestion de la flota operativa de terreno', 1);
 
 -- --------------------------------------------------------

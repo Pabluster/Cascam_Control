@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="estilo.css">
+	<title>Control y gestion de componentes Cas-Cam/LV</title>
+</head>
+<body>
+	<header>
+	<center>
+	<br><br>
+	<nav>
+		<ul>
+   			<li><a title="home" href="index.html">Inicio</a></li>
+   			<li><a title="add_mv_eq" href="add_mv_eq.html">Movimiento Equipo</a></li>
+   			<li><a title="add_gerencia" href="add_gerencia.html">Nueva Gerencia</a></li>
+   			<li><a title="add_sup_int" href="add_sup_int.html">Nueva Superintendencia</a></li>
+   			<li><a title="add_empresa" href="add_empresa_area.html">Nueva Empresa/Area</a></li>
+   			<li><a title="add_ejecutor" href="add_ejecutor.html">Nuevo Ejecutor</a></li>
+        <li><a title="buscardor" href="buscar.html">Buscar</a></li>
+		</ul>
+	</nav>
+	</center>
+	</header>
+    <div id="buscador">
+          <form action="buscar.php" method="get" name="formulario_busqueda">
+      Ingrese Numero Interno a Buscar: <br><input type="text" name="num_int"></input><br>
+      <br><input type="submit" name="boton-buscar" value="Buscar"></input><br>
+      <br><input type="button" class="submit" value="Salir" onclick="location.href='index.html'"></input><br>
+    </div>
+  </body>
+<footer>
+    <p>
+        <center>
+            Todos los Derechos Reservados<br> 
+            &copy; Pablo Figueroa Alvarez Marzo 2015
+        </center>
+    </p>
+</footer>
+</html>
