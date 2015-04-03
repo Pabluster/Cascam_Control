@@ -17,9 +17,9 @@
 * * 
 * Modificaciones
 * *
-* Version 0.0.0
-* Fecha Modificacion
-* Hora ultima modificacion
+* Version 0.0.5
+* Fecha Modificacion 20150403
+* Hora ultima modificacion 05:03:45
 * *
 * Datos del desarrollador
 * *
@@ -50,9 +50,7 @@
     * con la finalidad de comprobar que no tengamos campos vacios en el formulario
     */
     if (isset($_POST['empresa']) && !empty($_POST['empresa']) &&
-        isset($_POST['rut']) && !empty($_POST['rut']) &&
-        isset($_POST['giro']) && !empty($_POST['giro']) &&
-        isset($_POST['area']) && !empty($_POST['area'])
+        isset($_POST['giro']) && !empty($_POST['giro'])
         )
     {
         
@@ -66,9 +64,7 @@
         * Definimos variables para cada uno de los datos a almacenar
         */
         $empresaRG = $_POST['empresa'];
-        $rutRG     = $_POST['rut'];
         $giroRG    = $_POST['giro'];
-        $areaRG    = $_POST['area'];
         
         /**
         * Definimos una query para insertar datos a nuestra tabla
@@ -79,7 +75,7 @@
         * antes seleccionadas, como los datos almacenados en las variables son del caracter string
         * deben ir entre comilla simple.
         */
-        mysql_query("INSERT INTO TBL_Empresa(Nom_Empresa,Rut,Giro,Area) values('$empresaRG','$rutRG','$giroRG','$areaRG') ");
+        mysql_query("INSERT INTO TBL_Empresa(Nom_Empresa,Giro) values('$empresaRG','$giroRG') ");
         /**
         * Cerramos la Query de insercion de datos
         */
