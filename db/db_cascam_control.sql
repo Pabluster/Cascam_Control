@@ -63,7 +63,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `tbl_gerencia` (
   `id_gerencia` int(10) NOT NULL AUTO_INCREMENT,
-  `Nom_Gerencia` varchar(20) NOT NULL,
+  `Nom_Gerencia` varchar(30) NOT NULL,
   PRIMARY KEY (`id_gerencia`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
@@ -85,7 +85,7 @@ INSERT INTO `tbl_gerencia` (`id_gerencia`, `Nom_Gerencia`) VALUES
 
 CREATE TABLE IF NOT EXISTS `tbl_sup_int` (
   `id_supint` int(5) NOT NULL AUTO_INCREMENT,
-  `Nom_Sup_Int` varchar(20) NOT NULL,
+  `Nom_Sup_Int` varchar(30) NOT NULL,
   `id_gerencia` int(5) NOT NULL REFERENCES tbl_gerencia(id_gerencia),
   PRIMARY KEY (`id_supint`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
@@ -106,8 +106,8 @@ INSERT INTO `tbl_sup_int` (`id_supint`, `Nom_Sup_Int`, `id_gerencia`) VALUES
 
 CREATE TABLE IF NOT EXISTS `tbl_empresa_area` (
   `id_empresa_area` int(5) NOT NULL AUTO_INCREMENT,
-  `Nom_Empresa` varchar(20) NOT NULL,
-  `Giro` varchar(50) DEFAULT NULL,
+  `Nom_Empresa` varchar(30) NOT NULL,
+  `Giro` varchar(80) DEFAULT NULL,
   `id_supint` int(5) NOT NULL REFERENCES tbl_sup_int(id_supint),
   PRIMARY KEY (`id_empresa_area`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `tbl_empresa_area` (
 --
 
 INSERT INTO `tbl_empresa_area` (`id_empresa_area`, `Nom_Empresa`, `Giro`, `id_supint`) VALUES
-(1, 'Automatizacion Mina', 'Mantencion de sistemas tecnologicos', 1),
+(1, 'Automatizacion Mina', 'Instalacion , Desarrollo y Mantención de sistemas tecnologicos', 1),
 (2, 'Despacho Mina', 'Control y gestion de la flota operativa de terreno', 1);
 
 -- --------------------------------------------------------
@@ -130,9 +130,9 @@ CREATE TABLE IF NOT EXISTS `tbl_ejecutor` (
   `id_ejecutor` int(5) NOT NULL AUTO_INCREMENT,
   `Nom_Ejecutor` varchar(50) NOT NULL,
   `RUT` varchar(12) NOT NULL,
-  `Cargo` varchar(20) DEFAULT NULL,
+  `Cargo` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_ejecutor`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Volcado de datos para la tabla `tbl_ejecutor`
@@ -149,8 +149,31 @@ INSERT INTO `tbl_ejecutor` (`id_ejecutor`, `Nom_Ejecutor`, `RUT`, `Cargo`) VALUE
 (8, 'Francisco Ibarra Sangueza', '15.407.144-k', 'Tecnico Automatizacion'),
 (9, 'Raul Veliz Valencia', '13.016.804-3', 'Tecnico Automatizacion'),
 (10, 'Alfredo Alarcon Rebolledo', '7.716.230-5', 'Tecnico Automatizacion'),
-(11, 'Luis Salvatierres Julio', '15.053.874-2', 'Tecnico Automatizacion');
+(11, 'Luis Salvatierres Julio', '15.053.874-2', 'Tecnico Automatizacion'),
+(12, 'Gonzalo Nuñez Miranda', '12.006.900-4', 'Senior Automatizacion');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_proceso`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_proceso` (
+  `id_proceso` int(5) NOT NULL AUTO_INCREMENT,
+  `Nom_Proceso` varchar(20) NOT NULL,
+  PRIMARY KEY (`id_proceso`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+--
+-- Volcado de datos para la tabla `tbl_proceso`
+--
+
+INSERT INTO `tbl_proceso` (`id_proceso`, `Nom_Proceso`) VALUES
+(1, 'Instalación'),
+(2, 'Desisntalación'),
+(3, 'Reinstalación'),
+(4, 'Mantención'),
+(5, 'Reparación');
 
 -- --------------------------------------------------------
 
@@ -169,8 +192,17 @@ CREATE TABLE IF NOT EXISTS `tbl_mv_eq` (
   `Sn_DashBoard` varchar(20) NOT NULL,
   `Ejecutor` int(5) NOT NULL REFERENCES tbl_ejecutor(id_ejecutor),
   `Fecha` date NOT NULL,
+  `Proceso` int(5) NOT NULL REFERENCES tbl_proceso(id_proceso),
+  `Comentarios` blob,
   PRIMARY KEY (`Num_Interno`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tbl_mv_eq`
+--
+
+INSERT INTO `tbl_mv_eq` (`Num_Interno`,`Patente`,`Km`,`Gerencia`,`Sup_Int`,`Empresa_Area`,`Sn_Rf`,`Sn_DashBoard`,`Ejecutor`,`Fecha`,`Proceso`,`Comentarios`) VALUES
+('CTA025', 'HCFJ86', '2848', 1, 1, 1, '295411050050', '711208120277', 1, '20150402', 1, '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

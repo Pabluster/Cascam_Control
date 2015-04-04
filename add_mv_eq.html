@@ -13,6 +13,7 @@
         $( "#contEmpresa" ).load( "select-empresa_area.php" );
         $( "#contsuperin" ).load( "select-superint.php" );
         $( "#contejecutor" ).load( "select-ejecutor.php" );
+        $( "#contproceso" ).load( "select-proceso.php" );
 
     });
     </script>
@@ -48,6 +49,8 @@
     Numero Serie Dash  : <br> <input type="text" name="sn_dash"> Sin comas ni puntos </input><br>
     Ejecutor           : <p id="contejecutor"></p>
     Fecha de Ejecucion : <br><input type="date" name="fecha"> AAAAMMDD</input><br>
+    Proceso            : <p id="contproceso"></p><br>
+    Comentarios        : <br><textarea name="comentarios" rows="10" cols="40"></textarea><br>
     <br><input type="submit" name="boton_guardar" value="Guardar"></input><br>
     <br><input type="button" class="submit" value="Salir" onclick="location.href='index.html'"></input><br>
     </form>

@@ -58,7 +58,8 @@
         isset($_POST['sn_rf']) && !empty($_POST['sn_rf']) &&
         isset($_POST['sn_dash']) && !empty($_POST['sn_dash']) &&
         isset($_POST['ejecutor']) && !empty($_POST['ejecutor']) &&
-        isset($_POST['fecha']) && !empty($_POST['fecha'])
+        isset($_POST['fecha']) && !empty($_POST['fecha']) &&
+        isset($_POST['proceso']) && !empty($_POST['proceso'])
         )       
     {
 
@@ -81,6 +82,8 @@
         $sn_dashRG   = trim($_POST['sn_dash']);
         $ejecutorRG  = trim($_POST['ejecutor']);
         $fechaRG     = trim($_POST['fecha']);
+        $procesoRG   = trim($_POST['proceso']);
+        $comentRG    = trim($_POST['comentario'])
         
         /**
         * Definimos una query para insertar datos a nuestra tabla
@@ -94,31 +97,27 @@
         
 
         $query = "SELECT * FROM tbl_mv_eq WHERE Num_Interno='$n_intRG'";
-        $cod = mysql_query($query) or die(mysql_error());
+        $cod = mysql_query($query) or die()(mysql_error());
         $total = mysql_num_rows($cod);
         
         if ($total > 0){
 
             echo "El vehiculo con el $n_intRG ya existe";
             
-        }else{
-             
-                 mysql_query(
-                "INSERT INTO tbl_mv_eq (Num_Interno,Patente,Km,Gerencia,Sup_Int,Empresa_Area,Sn_Rf,Sn_DashBoard,Ejecutor,Fecha ) 
-                values('$n_intRG','$patenteRG','$kmRG','$gerenciaRG','$siRG','$empresaRG','$sn_rfRG','$sn_dashRG','$ejecutorRG','$fechaRG')");
-                echo "<a href=add_mv_eq.html>Volver al formulario</a>";
-                echo "<br><a href=index.html>Ir al Formulario de Movimiento de Equipos</a><br>";
-
+        }else{ 
+            mysql_query(
+            "INSERT INTO tbl_mv_eq (Num_Interno,Patente,Km,Gerencia,Sup_Int,Empresa_Area,Sn_Rf,Sn_DashBoard,Ejecutor,Fecha,Proceso,Comentario) 
+            VALUES('$n_intRG','$patenteRG','$kmRG','$gerenciaRG','$siRG','$empresaRG','$sn_rfRG','$sn_dashRG','$ejecutorRG','$fechaRG,'$procesoRG','$comentRG')");
+            echo "<a href=add_mv_eq.html>Volver al formulario</a>";
+            echo "<br><a href=index.html>Ir al Formulario de Movimiento de Equipos</a><br>";
             }
-                
-    }
-  
-    else
-    {
+    }else{
         /**
-        * Enviamos un mensaje de error
+        * Enviamos un mensaje de error si no se cumple la sentencia de comprobacion
+        * invocada en el if, el cual valida que existan datos en los campos comprobados
         */
-        echo "<br>Debe completar todos los datos del formulario<br>";
+        echo "<br>Los unicos datos que no son obligatorios son los comentariosz<br>";
+        echo "revise que el resto de los campos del formulario esten bien ingresados<br>";
         echo "<br><a href=add_mv_eq.html>Volver al formulario</a><br>";
     }
 ?>
