@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `tbl_gerencia` (
   `id_gerencia` int(10) NOT NULL AUTO_INCREMENT,
   `Nom_Gerencia` varchar(30) NOT NULL,
   PRIMARY KEY (`id_gerencia`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `tbl_gerencia`
@@ -75,7 +75,8 @@ INSERT INTO `tbl_gerencia` (`id_gerencia`, `Nom_Gerencia`) VALUES
 (1, 'Gestion Mina'),
 (2, 'Operaciones Mina'),
 (3, 'Mantencion'),
-(4, 'Recursos Humanos');
+(4, 'Recursos Humanos'),
+(5, 'Iformatica');
 
 -- --------------------------------------------------------
 
@@ -88,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `tbl_sup_int` (
   `Nom_Sup_Int` varchar(30) NOT NULL,
   `id_gerencia` int(5) NOT NULL REFERENCES tbl_gerencia(id_gerencia),
   PRIMARY KEY (`id_supint`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `tbl_sup_int`
@@ -96,7 +97,29 @@ CREATE TABLE IF NOT EXISTS `tbl_sup_int` (
 
 INSERT INTO `tbl_sup_int` (`id_supint`, `Nom_Sup_Int`, `id_gerencia`) VALUES
 (1, 'Planificacion y Despacho', 1),
-(2, 'Perforacion y Tronadura', 2);
+(2, 'Perforacion y Tronadura', 2),
+(3, 'Palas y Perforadoras', 3),
+(4, 'Mantención', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_procedencia`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_procedencia` (
+  `id_procedencia` int(5) NOT NULL AUTO_INCREMENT,
+  `Nom_Procedencia` varchar(10) NOT NULL,
+  PRIMARY KEY (`id_procedencia`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `tbl_procedencia`
+--
+
+INSERT INTO `tbl_procedencia` (`id_procedencia`, `Nom_Procedencia`) VALUES
+(1, 'CMDIC'),
+(2, 'Esed');
 
 -- --------------------------------------------------------
 
@@ -109,16 +132,20 @@ CREATE TABLE IF NOT EXISTS `tbl_empresa_area` (
   `Nom_Empresa` varchar(30) NOT NULL,
   `Giro` varchar(80) DEFAULT NULL,
   `id_supint` int(5) NOT NULL REFERENCES tbl_sup_int(id_supint),
+  `id_procedencia` int(5) NOT NULL REFERENCES tbl_procedencia(id_procedencia),
   PRIMARY KEY (`id_empresa_area`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Volcado de datos para la tabla `tbl_empresa_area`
 --
 
-INSERT INTO `tbl_empresa_area` (`id_empresa_area`, `Nom_Empresa`, `Giro`, `id_supint`) VALUES
-(1, 'Automatizacion Mina', 'Instalacion , Desarrollo y Mantención de sistemas tecnologicos', 1),
-(2, 'Despacho Mina', 'Control y gestion de la flota operativa de terreno', 1);
+INSERT INTO `tbl_empresa_area` (`id_empresa_area`, `Nom_Empresa`, `Giro`, `id_supint`,`id_procedencia`) VALUES
+(1, 'Automatizacion Mina', 'Instalacion , Desarrollo y Mantención de sistemas tecnologicos', 1, 1),
+(2, 'Despacho Mina', 'Control y gestion de la flota operativa de terreno', 1, 1),
+(3, 'Ameco', 'Essed de apoyo en las tareas de mantención', 3, 2),
+(4, 'Bailac Neumaticos', 'Esed de apoyo en las tareas de mantencion neumaticos de la flota', 4, 2),
+(5, 'Minetec', '', 4, 2);
 
 -- --------------------------------------------------------
 
@@ -182,7 +209,7 @@ INSERT INTO `tbl_proceso` (`id_proceso`, `Nom_Proceso`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_mv_eq` (
-  `Num_Interno` varchar(6) NOT NULL,
+  `Num_Interno` varchar(7) NOT NULL,
   `Patente` varchar(6) NOT NULL,
   `Km` varchar(6) DEFAULT NULL,
   `Gerencia` int(5) NOT NULL REFERENCES tbl_gerencia(id_gerencia),
@@ -202,7 +229,10 @@ CREATE TABLE IF NOT EXISTS `tbl_mv_eq` (
 --
 
 INSERT INTO `tbl_mv_eq` (`Num_Interno`,`Patente`,`Km`,`Gerencia`,`Sup_Int`,`Empresa_Area`,`Sn_Rf`,`Sn_DashBoard`,`Ejecutor`,`Fecha`,`Proceso`,`Comentarios`) VALUES
-('CTA025', 'HCFJ86', '2848', 1, 1, 1, '295411050050', '711208120277', 1, '20150402', 1, '');
+( 'CTA025', 'HCFJ86', '2848',  1,  1,  1, '295411050050', '711208120277',  1, '20150402',  1, 'Equipos quedan instalados en camioneta de usuario 100% operativos'),
+('CTA1139', 'GXKD21', '0'   ,  3,  3,  3, '295410000202', '711208120944', 10, '20150329',  1, 'Equipos quedan instalados en camioneta de usuario 100% operativos'),
+( 'CTA852', 'HCKG65', '0'   ,  3,  4,  4, '295411040048', '711211020149', 10, '20150328',  1, 'Equipos quedan instalados en camioneta de usuario 100% operativos'),
+( 'CTA582', 'GDBC15', '0'   ,  3,  4,  5, '205414060004', '7121405092'  ,  6, '20150315',  1, 'Equipos quedan instalados en camioneta de usuario 100% operativos');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

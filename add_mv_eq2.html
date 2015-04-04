@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="estilo.css">
     <title>Formulario de Registro Movimiento Equipo Cascam/LV</title>
     
-     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-    <script>
-    jQuery(document).ready(function($) {
-        
-        $( "#contGerencia" ).load( "select-gerencia.php" );
-        $( "#contEmpresa" ).load( "select-empresa_area.php" );
-        $( "#contsuperin" ).load( "select-superint.php" );
-        $( "#contejecutor" ).load( "select-ejecutor.php" );
-        $( "#contproceso" ).load( "select-proceso.php" );
+    <script src="./script/jquery-1.11.2.js">
+    jQuery(document).ready(function($){
 
+        $("#lst_gerencia").load("lst_gerencia.php");
+
+        $("#lst_gerencia").change(function(){
+            alert($("#lst_gerencia").val());
+            })
     });
     </script>
 
@@ -38,18 +37,18 @@
 
     <div id="formularios">
     <form action="add_mv_eq.php" method="post" name="formulario_registro_movimiento_equipo">
-    Numero Interno     : <br> <input type="text" name="n_int"> Ej: CTA013 </input><br>
-    Patente            : <br> <input type="text" name="patente"> Ej: AABB11</input> <br>
-    Kilometraje        : <br> <input type="text" name="km"></input><br>
-    Gerencia           : <p id="contGerencia"></p>
-    Superintendencia   : <p id="contsuperin"></p>
-    Empresa o Area     : <p id="contEmpresa"></p>
-    Numero Serie RF    : <br> <input type="text" name="sn_rf"> Sin comas ni puntos </input><br>
-    Numero Serie Dash  : <br> <input type="text" name="sn_dash"> Sin comas ni puntos </input><br>
-    Ejecutor           : <p id="contejecutor"></p>
-    Fecha de Ejecucion : <br><input type="date" name="fecha"> AAAAMMDD</input><br>
-    Proceso            : <p id="contproceso"></p><br>
-    Comentarios        : <br><textarea name="comentarios" rows="4" cols="50"></textarea><br>
+    <lebel>Numero Interno     : </lebel><br><input type="text" name="n_int"> Ej: CTA013 </input><br>
+    <lebel>Patente            : </lebel><br><input type="text" name="patente"> Ej: AABB11</input> <br>
+    <lebel>Kilometraje        : </lebel><br><input type="text" name="km"></input><br><br>
+    <lebel>Gerencia           : </lebel><select id="lst_gerencia"></select><br><br>
+    <lebel>Superintendencia   : </lebel><select id="lst_supint"></select><br><br>
+    <lebel>Empresa o Area     : </lebel><select id="lst_empresa_area"></select><br><br>
+    <lebel>Numero Serie RF    : </lebel><br><input type="text" name="sn_rf"> Sin comas ni puntos </input><br>
+    <lebel>Numero Serie Dash  : </lebel><br><input type="text" name="sn_dash"> Sin comas ni puntos </input><br>
+    <lebel>Ejecutor           : </lebel><select id="lst_ejecutor"></select><br><br>
+    <lebel>Fecha de Ejecucion : </lebel><br><input type="date" name="fecha"> AAAAMMDD</input><br>
+    <lebel>Proceso            : </lebel><select id="lst_proceso"></select><br><br>
+    <lebel>Comentarios        : </lebel><br><textarea name="comentarios" rows="10" cols="40"></textarea><br>
     <br><input type="submit" name="boton_guardar" value="Guardar"></input><br>
     <br><input type="button" class="submit" value="Salir" onclick="location.href='index.html'"></input><br>
     </form>

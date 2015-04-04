@@ -44,36 +44,26 @@
 * ©Pablo Figueroa Alvarez Marzo 2015
 */
 
-    /**
-    * Definimos las variables a utilizar
-    */
+	/**
+	* Establecemos conexion con la DB
+	* llamando al archivo connect.php
+	*/
+	
+	$host ="localhost";
+	$user ="root";
+	$pass ="asdasd";
+	$db   ="DB_Cascam_Control";
 
-    $buscar1 = $_GET['num_int'];
+	$connect = mysqli_connect($host,$user,$pass,$db);
 
-        /**
-        * Establecemos conexion con la DB
-        * llamando al archivo connect.php
-        */
-        include("connect.php");
+	/**
+	* Definimos las variable para los resultados de la consulta completa de la tabla Gerencia
+	*/
 
-        /**
-        * Definimos variables para cada uno de los datos a almacenar
-        */
+	$result = mysqli_query($connect,"SELECT * FROM tbl_gerencia");
 
-        $query ="SELECT * FROM tbl_mv_eq WHERE Num_Interno LIKE '%$buscar1%' ORDER BY Num_Interno ASC";
-        $result = mysql_query($query);
-        echo include("buscar.html");
-        echo "<center>";
-        echo "<table border=1><tr><th>Num_Interno</th><th>Patente</th><th>Km</th><th>Gerencia</th><th>Sup_Int</th><th>Empresa_Area</th><th>Sn_Rf</th><th>Sn_DashBoard</th><th>Ejecutor</th><th>Fecha</th><th>Proceso</th><th>Comentarios</th></tr>";
-        while ($fila= mysql_fetch_row($result)) {
-        	echo "<tr>";
-        	for($i=0;$i<mysql_num_fields($result);$i++){
-        		echo "<td>".$fila[$i]."</td>";
-        	}
-        	echo "</tr>";
-        }
-        echo "</table>";
-        echo "</center>";
-
+	while ($row = mysqli_fetch_array($result)){
+		echo '<option value="'.$row['id_gerencia'].'">'.$row['Nom_Gerencia'].'</option>';
+	}
 
 ?>
